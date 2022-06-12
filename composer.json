@@ -1,19 +1,36 @@
 {
-    "name": "sajjadmgd/zarinpal",
-    "description": "A payment package for laravel based on zarinpal",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-      {
-        "name": "Sajjad Moghayyad",
-        "email": "sajjadmgd77@gmail.com"
-      }
-    ],
-    "require": {},
-    "autoload": {
-      "psr-4": {
-        "Sajjadmgd\\Zarinpal\\": "src"
+  "name": "sajjadmgd/zarinpal",
+  "description": "A payment package for laravel based on zarinpal",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sajjad Moghayyad",
+      "email": "sajjadmgd77@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sajjadmgd\\Zarinpal\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sajjadmgd\\Zarinpal\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sajjadmgd\\Zarinpal\\ZarinpalServiceProvider"
+      ],
+      "aliases": {
+          "Payment": "Sajjadmgd\\Zarinpal\\Facades\\Payment"
       }
     }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0",
+    "phpunit/phpunit": "^9.5"
   }
-  
+}
