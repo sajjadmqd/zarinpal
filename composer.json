@@ -1,0 +1,19 @@
+{
+    "name": "sajjadmgd/zarinpal",
+    "description": "A payment package for laravel based on zarinpal",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Sajjad Moghayyad",
+        "email": "sajjadmgd77@gmail.com"
+      }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Sajjadmgd\\Zarinpal\\": "src"
+      }
+    }
+  }
+  
