@@ -79,10 +79,10 @@ class Zarinpal
             $startPay = '';
             $startPayUrl = '';
         } else {
-            $status = (isset($result['status']) && $result['status'] != '') ? $result['status'] : 0;
+            $status = (isset($result['Status']) && $result['Status'] != '') ? $result['Status'] : 0;
             $message = $this->error_message($status, $description, $callbackURL, true);
-            $authority = (isset($result['authority']) && $result['authority'] != '') ? $result['authority'] : '';
-            $startPay = (isset($result['authority']) && $result['authority'] != '') ? "https://{$upay}.zarinpal.com/pg/StartPay/$authority" : '';
+            $authority = (isset($result['Authority']) && $result['Authority'] != '') ? $result['Authority'] : '';
+            $startPay = (isset($result['Authority']) && $result['Authority'] != '') ? "https://{$upay}.zarinpal.com/pg/StartPay/$authority" : '';
             $startPayUrl = (isset($zarinGate) && $zarinGate == true) ? "{$startPay}/ZarinGate" : $startPay;
         }
 
@@ -96,7 +96,7 @@ class Zarinpal
 
     public function verify($merchantID, $authority, $amount): object
     {
-        $data = array('merchant_id' => $merchantID, 'authority' => $authority, 'amount' => $amount);
+        $data = array('merchant_id' => $merchantID, 'authority' => $authority, 'amount' => $amount * 10);
         $jsonData = json_encode($data);
         $ch = curl_init('https://api.zarinpal.com/pg/v4/payment/verify.json');
         curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v1');

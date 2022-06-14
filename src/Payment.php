@@ -22,17 +22,17 @@ class Payment
 
     public function create(int $value, int $user_id, Model $transactionable, string $description)
     {
-        $merchantID = config('merchant_id');
+        $merchantID = config('zarinpal.merchant_id');
         $callbackURL = route('transactions.verify');
         $now = now();
         $res = $this->zarinpal->request($merchantID, $value, $callbackURL, $description);
-        $transaction = Transaction::new([
+        $transaction = new Transaction([
             'amount' => $value,
             'user_id' => $user_id,
             'status' => 'not-deposited',
             'description' => $description,
             'authority' => $res->authority,
-            'start_pay' => $res->startPayUrl,
+            'start_pay' => $res->startPay,
             'expire_in' => $now->addMinutes(30)
         ]);
 

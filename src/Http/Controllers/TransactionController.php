@@ -3,21 +3,28 @@
 namespace Sajjadmgd\Zarinpal\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Sajjadmgd\Zarinpal\Classes\Zarinpal;
 use Sajjadmgd\Zarinpal\Models\Transaction;
 
-class PostController extends Controller
+class TransactionController extends Controller
 {
     public function verify(Request $request)
     {
-        $merchantID = config('merchant_id');
+        $zarinpal = new Zarinpal();
+        $merchantID = config('zarinpal.merchant_id');
         $transaction = Transaction::firstWhere(['authority' => $request->Authority]);
-        $res = $this->zarinpal->verify($merchantID, $transaction->authority, $transaction->amount);
+        $res = $zarinpal->verify($merchantID, $transaction->authority, $transaction->amount);
 
         if ($res->status == 100) {
             $transaction->update([
                 'status' => 'deposited',
                 'ref_id' => $res->refID,
                 'payed_at' => now()
+            ]);
+        } else if ($res->status == 101) {
+            $transaction->update([
+                'status' => 'deposited',
+                'ref_id' => $res->refID
             ]);
         }
 
