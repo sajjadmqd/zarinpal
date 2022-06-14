@@ -28,8 +28,13 @@ class Transaction extends Model
 
     protected $guarded = [];
 
-    public function Product()
+    public function payable()
     {
         return $this->morphTo('payable');
+    }
+
+    protected static function newFactory()
+    {
+        return \Sajjadmgd\Zarinpal\Database\Factories\TransactionFactory::new();
     }
 }

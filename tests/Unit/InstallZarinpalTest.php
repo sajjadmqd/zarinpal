@@ -73,7 +73,7 @@ class InstallZarinpalTest extends TestCase
 
         // Assert that the original contents are overwritten
         $this->assertEquals(
-            file_get_contents(__DIR__ . '/../config/config.php'),
+            file_get_contents(__DIR__ . '/../../config/config.php'),
             file_get_contents(config_path('zarinpal.php'))
         );
 

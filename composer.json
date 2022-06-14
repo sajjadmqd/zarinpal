@@ -11,7 +11,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Sajjadmgd\\Zarinpal\\": "src"
+      "Sajjadmgd\\Zarinpal\\": "src",
+      "Sajjadmgd\\Zarinpal\\Database\\Factories\\": "database/factories"
     }
   },
   "autoload-dev": {
@@ -19,13 +20,17 @@
       "Sajjadmgd\\Zarinpal\\Tests\\": "tests"
     }
   },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-f": "vendor/bin/phpunit --filter"
+  },
   "extra": {
     "laravel": {
       "providers": [
         "Sajjadmgd\\Zarinpal\\ZarinpalServiceProvider"
       ],
       "aliases": {
-          "Payment": "Sajjadmgd\\Zarinpal\\Facades\\Payment"
+        "Payment": "Sajjadmgd\\Zarinpal\\Facades\\Payment"
       }
     }
   },

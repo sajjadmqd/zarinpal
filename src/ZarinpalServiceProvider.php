@@ -18,13 +18,19 @@ class ZarinpalServiceProvider extends ServiceProvider
 
   public function boot()
   {
+    $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
     if ($this->app->runningInConsole()) {
       $this->commands([
         InstallZarinpal::class,
       ]);
       $this->publishes([
-        __DIR__ . '../config/config.php' => config_path('zarinpal.php'),
+        __DIR__ . '/../config/config.php' => config_path('zarinpal.php'),
       ], 'config');
+    }
+
+    if (file_exists($file = app_path('src/helpers.php'))) {
+      require $file;
     }
   }
 }
