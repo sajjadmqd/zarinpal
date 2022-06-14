@@ -20,17 +20,28 @@ class Transaction extends Model
         'description',
         'authority',
         'ref_id',
-        'payable_id',
-        'payable_type',
+        'start_pay',
+        'user_id',
+        'transactionable_id',
+        'transactionable_type',
+        'canceled_at',
         'paid_at',
         'expire_in'
     ];
 
-    protected $guarded = [];
-
-    public function payable()
+    protected $dates = [
+        'canceled_at',
+        'paid_at',
+        'expire_in'
+    ];
+    public function transactionable()
     {
-        return $this->morphTo('payable');
+        return $this->morphTo('transactionable');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(config('auth.providers.users.model'));
     }
 
     protected static function newFactory()

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'transactions_table' => 'transactions',
+    'merchant_id' => env('MERCHANT_ID')
 ];
