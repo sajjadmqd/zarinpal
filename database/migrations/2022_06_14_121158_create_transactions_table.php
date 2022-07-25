@@ -27,7 +27,7 @@ return new class extends Migration
             $table->enum('status', Payment::TransctionStatuses);
             $table->timestamp('payed_at')->nullable();
             $table->timestamp('canceled_at')->nullable();
-            $table->timestamp('expire_in');
+            $table->timestamp('expire_in')->nullable();
             $table->timestamps();
         });
     }
