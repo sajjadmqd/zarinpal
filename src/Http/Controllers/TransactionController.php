@@ -28,6 +28,6 @@ class TransactionController extends Controller
             ]);
         }
 
-        return $res;
+        return redirect()->action(config('zarinpal.verify_action'), ['res' => $res]);
     }
 }
