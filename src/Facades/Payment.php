@@ -27,7 +27,7 @@ class Payment extends Facade
         return Transaction::whereNotNull('id');
     }
 
-    public function create(int $value, int $user_id, Model $transactionable, string $description)
+    public static function create(int $value, int $user_id, Model $transactionable, string $description)
     {
         $zarinpal = new Zarinpal();
 
@@ -50,7 +50,7 @@ class Payment extends Facade
         return $transaction->id;
     }
 
-    public function cancel(string $authority)
+    public static function cancel(string $authority)
     {
         $res = Transaction::firstWhere('authority', $authority)->update([
             'status' => 'canceled',
@@ -60,7 +60,7 @@ class Payment extends Facade
         return $res;
     }
 
-    public function pay(int $id)
+    public static function pay(int $id)
     {
         $transaction = Transaction::find($id);
         return redirect($transaction->start_pay);
