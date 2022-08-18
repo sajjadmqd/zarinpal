@@ -1,7 +1,7 @@
 <?php
 
-use Sajjadmgd\Zarinpal\Payment;
 use Illuminate\Support\Facades\Schema;
+use Sajjadmgd\Zarinpal\Facades\Payment;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

@@ -34,6 +34,16 @@ class Transaction extends Model
         'paid_at',
         'expire_in'
     ];
+
+    protected $appends = [
+        'failed'
+    ];
+
+    public function getFailedAttribute()
+    {
+        return $this->status == 'unsuccessful' or $this->status == 'canceled';
+    }
+
     public function transactionable()
     {
         return $this->morphTo('transactionable');
