@@ -47,7 +47,7 @@ class Payment extends Facade
 
         $transactionable->transactions()->save($transaction);
 
-        return $transaction->id;
+        return $transaction;
     }
 
     public static function cancel(string $authority)
