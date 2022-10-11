@@ -52,7 +52,7 @@ class Zarinpal
 
         $data = array(
             'MerchantID'     => $merchantID,
-            'Amount'         => $amount,
+            'Amount'         => $amount / 10,
             'Description'    => $description,
             'CallbackURL'    => $callbackURL,
         );

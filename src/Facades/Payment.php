@@ -9,7 +9,6 @@ use Sajjadmgd\Zarinpal\Models\Transaction;
 
 class Payment extends Facade
 {
-
     const TransctionStatuses = [
         'پرداخت نشده' => 'not-deposited',
         'پرداخت شده' => 'deposited',
