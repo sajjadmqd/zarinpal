@@ -96,7 +96,7 @@ class Zarinpal
 
     public function verify($merchantID, $authority, $amount): object
     {
-        $data = array('merchant_id' => $merchantID, 'authority' => $authority, 'amount' => $amount * 10);
+        $data = array('merchant_id' => $merchantID, 'authority' => $authority, 'amount' => $amount);
         $jsonData = json_encode($data);
         $ch = curl_init('https://api.zarinpal.com/pg/v4/payment/verify.json');
         curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v1');
