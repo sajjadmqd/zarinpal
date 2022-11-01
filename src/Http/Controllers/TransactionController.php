@@ -18,13 +18,13 @@ class TransactionController extends Controller
         if ($res->status == 100) {
             $transaction->update([
                 'status' => 'deposited',
-                'ref_id' => $res->refID,
+                'ref_id' => "$res->refID",
                 'payed_at' => now()
             ]);
         } else if ($res->status == 101) {
             $transaction->update([
                 'status' => 'deposited',
-                'ref_id' => $res->refID
+                'ref_id' => "$res->refID"
             ]);
         }
 
