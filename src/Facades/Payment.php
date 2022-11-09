@@ -15,7 +15,7 @@ class Payment extends Facade
         'لغو شده توسط کاربر' => 'canceled',
         'ناموفق' => 'unsuccessful'
     ];
-    
+
     protected static function getFacadeAccessor()
     {
         return 'payment';
@@ -34,19 +34,22 @@ class Payment extends Facade
         $callbackURL = route('transactions.verify');
         $now = now();
         $res = $zarinpal->request($merchantID, $value, $callbackURL, $description);
-        $transaction = new Transaction([
-            'amount' => $value,
-            'user_id' => $user_id,
-            'status' => 'not-deposited',
-            'description' => $description,
-            'authority' => $res->authority,
-            'start_pay' => $res->startPay,
-            'expire_in' => $now->addMinutes(30)
-        ]);
+        if ($res->status != 0) {
+            $transaction = new Transaction([
+                'amount' => $value,
+                'user_id' => $user_id,
+                'status' => 'not-deposited',
+                'description' => $description,
+                'authority' => $res->authority,
+                'start_pay' => $res->startPay,
+                'expire_in' => $now->addMinutes(30)
+            ]);
 
-        $transactionable->transactions()->save($transaction);
+            $transactionable->transactions()->save($transaction);
 
-        return $transaction;
+            return $transaction;
+        }
+        throw new \Exception("خطا در ایجاد تراکنش");
     }
 
     public static function cancel(string $authority)
