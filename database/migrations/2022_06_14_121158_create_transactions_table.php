@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('transactionable_id');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', Payment::TransctionStatuses);
-            $table->timestamp('payed_at')->nullable();
+            $table->timestamp('paid_at')->nullable();
             $table->timestamp('canceled_at')->nullable();
             $table->timestamp('expire_in')->nullable();
             $table->timestamps();
