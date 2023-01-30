@@ -2,8 +2,8 @@
 
 namespace Sajjadmgd\Zarinpal;
 
-use Sajjadmgd\Zarinpal\Payment;
 use Illuminate\Support\ServiceProvider;
+use Sajjadmgd\Zarinpal\Facades\Payment;
 use Sajjadmgd\Zarinpal\Console\InstallZarinpal;
 
 class ZarinpalServiceProvider extends ServiceProvider
