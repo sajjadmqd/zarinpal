@@ -18,7 +18,6 @@ class ZarinpalServiceProvider extends ServiceProvider
 
   public function boot()
   {
-    $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
     if ($this->app->runningInConsole()) {
@@ -32,7 +31,7 @@ class ZarinpalServiceProvider extends ServiceProvider
 
       $this->publishes([
         __DIR__ . '/../database/migrations/' => database_path('migrations')
-      ]);
+      ], 'migration');
     }
 
     if (file_exists($file = app_path('src/helpers.php'))) {
