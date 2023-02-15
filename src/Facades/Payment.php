@@ -34,7 +34,7 @@ class Payment extends Facade
         $callbackURL = route('transactions.verify');
         $now = now();
         $res = $zarinpal->request($merchantID, $value, $callbackURL, $description);
-        if ($res->status != 0) {
+        if ($res->status == 100) {
             $transaction = new Transaction([
                 'amount' => $value,
                 'user_id' => $user_id,
